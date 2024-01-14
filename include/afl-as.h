@@ -226,7 +226,7 @@ static const u8 *main_payload_32 =
   "  je    __afl_setup_abort\n"
   "\n"
 #ifdef USEMMAP
-  "  pushl $384        /* shm_open mode 0600 */\n"
+  "  pushl $504        /* shm_open mode 0600 */\n"
   "  pushl $2          /* flags O_RDWR   */\n"
   "  pushl %eax        /* SHM file path  */\n"
   "  call  shm_open\n"
@@ -534,7 +534,7 @@ static const u8 *main_payload_64 =
   "  je    __afl_setup_abort\n"
   "\n"
 #ifdef USEMMAP
-  "  movl $384, %edx   /* shm_open mode 0600 */\n"
+  "  movl $504, %edx   /* shm_open mode 0600 */\n"
   "  movl $2,   %esi   /* flags O_RDWR   */\n"
   "  movq %rax, %rdi   /* SHM file path  */\n"
   CALL_L64("shm_open")

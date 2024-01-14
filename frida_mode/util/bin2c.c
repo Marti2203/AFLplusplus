@@ -12,7 +12,7 @@ void fatal(char *msg) {
 
 void bin2c_write(char *name, char *output, unsigned char *buff, size_t size) {
 
-  int fd = open(output, O_CREAT | O_WRONLY | O_TRUNC, 00660);
+  int fd = open(output, O_CREAT | O_WRONLY | O_TRUNC, 00770);
   if (fd < 0) { fatal("open"); }
 
   /* Write the array definition */

@@ -383,7 +383,7 @@ BEGIN {
   }
 
   # Check for the more efficient way to copy files...
-  if (0 != system("mkdir -p -m 0700 "trace_dir)) {
+  if (0 != system("mkdir -p -m 0770 "trace_dir)) {
     print "[-] Error: Cannot create directory "trace_dir > "/dev/stderr"
     exit 1
   }

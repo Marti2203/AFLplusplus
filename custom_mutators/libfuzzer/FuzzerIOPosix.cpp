@@ -200,7 +200,7 @@ void RawPrint(const char *Str) {
 
 void MkDir(const std::string &Path) {
 
-  mkdir(Path.c_str(), 0700);
+  mkdir(Path.c_str(), 0770);
 
 }
 

@@ -1426,7 +1426,7 @@ char *create_nyx_tmp_workdir(void) {
   char *nyx_out_dir_path =
       alloc_printf("%s/.nyx_tmp_%d/", tmpdir, (u32)getpid());
 
-  if (mkdir(nyx_out_dir_path, 0700)) { PFATAL("Unable to create nyx workdir"); }
+  if (mkdir(nyx_out_dir_path, 0770)) { PFATAL("Unable to create nyx workdir"); }
 
   return nyx_out_dir_path;
 

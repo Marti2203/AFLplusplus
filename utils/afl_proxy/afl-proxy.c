@@ -117,7 +117,7 @@ static void __afl_map_shm(void) {
     unsigned char *shm_base = NULL;
 
     /* create the shared memory segment as if it was a file */
-    shm_fd = shm_open(shm_file_path, O_RDWR, 0600);
+    shm_fd = shm_open(shm_file_path, O_RDWR, 0770);
     if (shm_fd == -1) {
 
       fprintf(stderr, "shm_open() failed\n");

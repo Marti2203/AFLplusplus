@@ -50,7 +50,7 @@
 #define STRATEGY_SWITCH_TIME 1000
 
 /* Default file permission umode when creating files (default: 0600) */
-#define DEFAULT_PERMISSION 0600
+#define DEFAULT_PERMISSION 0770
 
 /* CMPLOG/REDQUEEN TUNING
  *

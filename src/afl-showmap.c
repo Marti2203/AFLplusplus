@@ -1664,7 +1664,7 @@ int main(int argc, char **argv_orig, char **envp) {
 
       if (!(dir_out = opendir(out_file))) {
 
-        if (mkdir(out_file, 0700)) {
+        if (mkdir(out_file, 0770)) {
 
           PFATAL("cannot create output directory %s", out_file);
 

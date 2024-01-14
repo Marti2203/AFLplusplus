@@ -2077,13 +2077,13 @@ void setup_dirs_fds(afl_state_t *afl) {
 
   ACTF("Setting up output directories...");
 
-  if (afl->sync_id && mkdir(afl->sync_dir, 0700) && errno != EEXIST) {
+  if (afl->sync_id && mkdir(afl->sync_dir, 0770) && errno != EEXIST) {
 
     PFATAL("Unable to create '%s'", afl->sync_dir);
 
   }
 
-  if (mkdir(afl->out_dir, 0700)) {
+  if (mkdir(afl->out_dir, 0770)) {
 
     if (errno != EEXIST) { PFATAL("Unable to create '%s'", afl->out_dir); }
 
@@ -2125,39 +2125,39 @@ void setup_dirs_fds(afl_state_t *afl) {
   /* Queue directory for any starting & discovered paths. */
 
   tmp = alloc_printf("%s/queue", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* Top-level directory for queue metadata used for session
      resume and related tasks. */
 
   tmp = alloc_printf("%s/queue/.state/", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* Directory for flagging queue entries that went through
      deterministic fuzzing in the past. */
 
   tmp = alloc_printf("%s/queue/.state/deterministic_done/", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* Directory with the auto-selected dictionary entries. */
 
   tmp = alloc_printf("%s/queue/.state/auto_extras/", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* The set of paths currently deemed redundant. */
 
   tmp = alloc_printf("%s/queue/.state/redundant_edges/", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* The set of paths showing variable behavior. */
 
   tmp = alloc_printf("%s/queue/.state/variable_behavior/", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* Sync directory for keeping track of cooperating fuzzers. */
@@ -2166,7 +2166,7 @@ void setup_dirs_fds(afl_state_t *afl) {
 
     tmp = alloc_printf("%s/.synced/", afl->out_dir);
 
-    if (mkdir(tmp, 0700) && (!afl->in_place_resume || errno != EEXIST)) {
+    if (mkdir(tmp, 0770) && (!afl->in_place_resume || errno != EEXIST)) {
 
       PFATAL("Unable to create '%s'", tmp);
 
@@ -2179,13 +2179,13 @@ void setup_dirs_fds(afl_state_t *afl) {
   /* All recorded crashes. */
 
   tmp = alloc_printf("%s/crashes", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* All recorded hangs. */
 
   tmp = alloc_printf("%s/hangs", afl->out_dir);
-  if (mkdir(tmp, 0700)) { PFATAL("Unable to create '%s'", tmp); }
+  if (mkdir(tmp, 0770)) { PFATAL("Unable to create '%s'", tmp); }
   ck_free(tmp);
 
   /* Generally useful file descriptors. */

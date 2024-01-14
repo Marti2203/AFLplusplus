@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     static unsigned int counter = 0;
     char                fn[32];
     sprintf(fn, "%09u:test-instr", counter);
-    int fd_doc = open(fn, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    int fd_doc = open(fn, O_WRONLY | O_CREAT | O_TRUNC, 0770);
     if (fd_doc >= 0) {
 
       if (write(fd_doc, buf, len) != __afl_fuzz_len) {
