@@ -5,7 +5,7 @@
    Originally written by Michal Zalewski
 
    Now maintained by Marc Heuse <mh@mh-sec.de>,
-                        Heiko Eißfeldt <heiko.eissfeldt@hexco.de> and
+                        Heiko Eissfeldt <heiko.eissfeldt@hexco.de> and
                         Andrea Fioraldi <andreafioraldi@gmail.com>
 
    Copyright 2016, 2017 Google Inc. All rights reserved.
@@ -370,9 +370,9 @@ void mark_as_redundant(afl_state_t *afl, struct queue_entry *q, u8 state) {
 
     s32 fd;
 
-    fd = open(fn, O_WRONLY | O_CREAT | O_EXCL, DEFAULT_PERMISSION);
-    if (fd < 0) { PFATAL("Unable to create '%s'", fn); }
-    close(fd);
+    if (unlikely(afl->afl_env.afl_disable_redundant)) { q->disabled = 1; }
+    fd = permissive_create(afl, fn);
+    if (fd >= 0) { close(fd); }
 
   } else {
 
